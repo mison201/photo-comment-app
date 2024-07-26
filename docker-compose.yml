@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432/photodb
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - custom_network
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: photodb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    networks:
+      - custom_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d photodb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+networks:
+  custom_network:
+    driver: bridge

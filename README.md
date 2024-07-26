@@ -1,40 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Photo Comment App
 
-## Getting Started
+Photo Comment App is a web application that allows users to upload and comment on photos.
 
-First, run the development server:
+## Requirements
+
+- Node.js v18 or higher
+- PostgreSQL
+
+## Project Structure
+
+```plaintext
+/src
+  /components
+    - PhotoCard.tsx
+    - UploadPhoto.tsx
+  /handlers
+    - commentHandlers.ts
+    - uploadHandlers.ts
+  /helpers
+    - imageHelper.ts
+  /services
+    - commentService.ts
+    - photoService.ts
+  /styles
+    - globals.css
+  /pages
+    /api
+        - comments.ts
+        - photos.ts
+    - index.tsx
+  /api
+    - comments.ts
+    - photos.ts
+```
+
+## Running the Application with Docker Compose
+
+### 1. Start the docker
+
+```bash
+docker-compose up --build
+```
+
+### 2. Docker info
+
+```plaintext
+Webapp running on port 3000
+Postgres database is running on port 5432
+```
+
+## Running the Application Locally
+
+### 1. Start PostgreSQL
+
+Start PostgreSQL locally and create the necessary database.
+
+### 2. Configure the Database
+
+Update `DATABASE_URL` in `.env` or configure it directly in the source code.
+
+### 3. Install Dependencies
+
+Install the dependencies by running:
+
+```bash
+npm install
+```
+
+### 4. Run the Application
+
+Init database:
+
+```
+npm run db:sync
+```
+
+Run the application in development mode:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contributing
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+If you would like to contribute to the project, please create a pull request and describe your changes in detail.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## License
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the MIT License.
