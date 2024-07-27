@@ -10,28 +10,34 @@ Photo Comment App is a web application that allows users to upload and comment o
 ## Project Structure
 
 ```plaintext
-/src
-  /components
-    - PhotoCard.tsx
-    - UploadPhoto.tsx
-  /handlers
-    - commentHandlers.ts
-    - uploadHandlers.ts
-  /helpers
-    - imageHelper.ts
-  /services
-    - commentService.ts
-    - photoService.ts
-  /styles
-    - globals.css
-  /pages
-    /api
-        - comments.ts
-        - photos.ts
-    - index.tsx
-  /api
-    - comments.ts
-    - photos.ts
+src
+├── components
+│   ├── PhotoCard.tsx
+│   └── UploadPhoto.tsx
+├── config
+│   ├── prismaClient.ts
+│   └── setting.ts
+├── controllers
+│   ├── commentController.ts
+│   └── photoController.ts
+├── global.d.ts
+├── handlers
+│   ├── commentHandlers.ts
+│   └── uploadHandlers.ts
+├── helpers
+│   └── imageHelper.ts
+├── pages
+│   ├── _app.tsx
+│   ├── _document.tsx
+│   ├── api
+│   │   ├── comments.ts
+│   │   └── photos.ts
+│   └── index.tsx
+├── services
+│   ├── commentService.ts
+│   └── photoService.ts
+└── styles
+    └── globals.css
 ```
 
 ## Running the Application with Docker Compose
